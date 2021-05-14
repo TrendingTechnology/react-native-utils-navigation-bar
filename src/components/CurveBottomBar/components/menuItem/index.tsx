@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleProp, StyleSheet, View, ViewStyle, Text } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 export interface Props {
   name: string;

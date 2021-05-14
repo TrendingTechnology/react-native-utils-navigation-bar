@@ -73,7 +73,7 @@ const BottomBarComponent: React.FC<Props> = (props) => {
     return (
       <SafeAreaView style={[styles.wrapContainer, { backgroundColor: bgColor }]}>
         <View style={styles.wrapContainer}>
-          {selectMenuItem ? selectMenuItem : null}
+          {selectMenuItem ? <View style={{ flex: 1, backgroundColor: 'white' }}>{selectMenuItem}</View> : null}
           <View style={[styles.container, style]}>
             <Svg width={width} {...{ height }}>
               <Path fill={bgColor} {...{ d }} />
