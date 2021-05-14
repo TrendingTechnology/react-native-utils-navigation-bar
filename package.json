@@ -2,7 +2,7 @@
   "name": "react-native-utils-navigation-bar",
   "title": "React Native Utils Navigation Bar",
   "version": "0.1.0",
-  "description": "TODO",
+  "description": "React Native Navigation Bar",
   "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
