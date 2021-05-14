@@ -1,7 +1,7 @@
 {
   "name": "react-native-utils-navigation-bar",
   "title": "React Native Utils Navigation Bar",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "React Native Navigation Bar",
   "main": "index.ts",
   "scripts": {
@@ -9,8 +9,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://https://github.com/hoaphantn7604/react-native-utils-navigation-bar.git",
-    "baseUrl": "https://https://github.com/hoaphantn7604/react-native-utils-navigation-bar"
+    "url": "git+https://github.com/hoaphantn7604/react-native-utils-navigation-bar.git",
+    "baseUrl": "https://github.com/hoaphantn7604/react-native-utils-navigation-bar"
   },
   "keywords": [
     "react-native",
