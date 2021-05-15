@@ -1,18 +1,18 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View, Dimensions } from 'react-native';
 import { CurveBottomBar } from 'react-native-utils-navigation-bar';
-
+const { width } = Dimensions.get('window');
 const ic_react = require('./assets/ic_react.png');
 
 const ThemeScreen = props => {
   return (
     <View style={styles.container}>
       <CurveBottomBar.Navigator
-        // style={{marginBottom: 10}}
-        // width={400}
-        // height={70}
-        // circleWidth={60}
+        style={{marginBottom: 10}}
+        width={width - 30}
+        height={70}
+        circleWidth={60}
         borderTopLeftRight={true}
         bgColor="black"
         initialRouteName="title 1"

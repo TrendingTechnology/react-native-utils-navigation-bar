@@ -9,11 +9,8 @@ export const getPath = (width: number, height: number, centerWidth: number, bord
     { x: 0, y: 0 },
     { x: width, y: 0 },
   ]);
-  const tab = shape
-    .line()
-    .x((d) => d.x)
-    .y((d) => d.y)
-    .curve(shape.curveBasis)([
+
+  const borderTopLeft = borderTopLeftRight ? [
     { x: 0 - 10, y: 0 }, // end left
     { x: 0 - 10, y: 0 },
     { x: 0 - 10, y: height },
@@ -23,12 +20,40 @@ export const getPath = (width: number, height: number, centerWidth: number, bord
     { x: 0, y: height },
     { x: 0, y: height },
 
-    { x: 0, y: borderTopLeftRight ? 20 : 0 }, // border left
-    { x: 0, y: borderTopLeftRight ? 20 : 0 },
-    { x: 0 + (borderTopLeftRight ? 2: 0), y: borderTopLeftRight ? 10 : 0 },
-    { x: 0 + (borderTopLeftRight ? 10: 0 ), y: borderTopLeftRight ? 2: 0 },
-    { x: 0 + (borderTopLeftRight ? 20 : 0), y: 0 },
-    { x: 0 + (borderTopLeftRight ? 20: 0), y: 0 },
+    { x: 0, y: 20 }, // border left
+    { x: 0, y: 20 },
+    { x: 0 + 2, y: 10},
+    { x: 0 + 10, y: 2},
+    { x: 0 + 20, y: 0 },
+    { x: 0 + 20, y: 0 },
+  ] : [];
+
+  const borderTopRigth = borderTopLeftRight ? [
+    { x: width - 20, y: 0 }, //border right
+    { x: width - 20, y: 0 },
+    { x: width - 10, y: 2 },
+    { x: width - 2, y: 10 },
+    { x: width, y: 20 },
+    { x: width, y: 20 },
+    { x: width, y: 0 },
+    { x: width, y: 0 },
+
+    { x: width, y: height }, // end left
+    { x: width, y: height },
+    { x: width, y: height },
+    { x: width + 10, y: height },
+    { x: width + 10, y: height },
+    { x: width + 10, y: height },
+    { x: width + 10, y: 0 },
+    { x: width + 10, y: 0 },
+  ]: [];
+
+  const tab = shape
+    .line()
+    .x((d) => d.x)
+    .y((d) => d.y)
+    .curve(shape.curveBasis)([
+    ...borderTopLeft,
 
     { x: (width - circleWidth) / 2 - 20, y: 0 }, // border center left
     { x: (width - circleWidth) / 2 - 20, y: 0 },
@@ -49,24 +74,7 @@ export const getPath = (width: number, height: number, centerWidth: number, bord
     { x: (width - circleWidth) / 2 + circleWidth + 10, y: 2 },
     { x: (width - circleWidth) / 2 + circleWidth + 20, y: 0 },
     { x: (width - circleWidth) / 2 + circleWidth + 20, y: 0 },
-
-    { x: width - (borderTopLeftRight ? 20 : 0), y: 0 }, //border right
-    { x: width - (borderTopLeftRight ? 20 : 0), y: 0 },
-    { x: width - (borderTopLeftRight ? 10 : 0 ), y: borderTopLeftRight ? 2 : 0 },
-    { x: width - (borderTopLeftRight ? 2 : 0), y: borderTopLeftRight ? 10 : 0 },
-    { x: width, y: borderTopLeftRight ? 20 : 0 },
-    { x: width, y: borderTopLeftRight ? 20 : 0},
-    { x: width, y: 0 },
-    { x: width, y: 0 },
-
-    { x: width, y: height }, // end left
-    { x: width, y: height },
-    { x: width, y: height },
-    { x: width + 10, y: height },
-    { x: width + 10, y: height },
-    { x: width + 10, y: height },
-    { x: width + 10, y: 0 },
-    { x: width + 10, y: 0 },
+     ...borderTopRigth
   ]);
   const right = shape
     .line()
