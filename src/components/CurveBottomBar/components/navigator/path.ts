@@ -1,8 +1,6 @@
 import * as shape from 'd3-shape';
-import { Dimensions } from 'react-native';
-const { width } = Dimensions.get('window');
 
-export const getPath = (height: number, centerWidth: number, borderLeftRight: boolean = false) => {
+export const getPath = (width: number, height: number, centerWidth: number, borderTopLeftRight: boolean = false) => {
   const circleWidth = centerWidth + 16;
   const left = shape
     .line()
@@ -25,12 +23,12 @@ export const getPath = (height: number, centerWidth: number, borderLeftRight: bo
     { x: 0, y: height },
     { x: 0, y: height },
 
-    { x: 0, y: borderLeftRight ? 20 : 0 }, // border left
-    { x: 0, y: borderLeftRight ? 20 : 0 },
-    { x: 0 + (borderLeftRight ? 2: 0), y: borderLeftRight ? 10 : 0 },
-    { x: 0 + (borderLeftRight ? 10: 0 ), y: borderLeftRight ? 2: 0 },
-    { x: 0 + (borderLeftRight ? 20 : 0), y: 0 },
-    { x: 0 + (borderLeftRight ? 20: 0), y: 0 },
+    { x: 0, y: borderTopLeftRight ? 20 : 0 }, // border left
+    { x: 0, y: borderTopLeftRight ? 20 : 0 },
+    { x: 0 + (borderTopLeftRight ? 2: 0), y: borderTopLeftRight ? 10 : 0 },
+    { x: 0 + (borderTopLeftRight ? 10: 0 ), y: borderTopLeftRight ? 2: 0 },
+    { x: 0 + (borderTopLeftRight ? 20 : 0), y: 0 },
+    { x: 0 + (borderTopLeftRight ? 20: 0), y: 0 },
 
     { x: (width - circleWidth) / 2 - 20, y: 0 }, // border center left
     { x: (width - circleWidth) / 2 - 20, y: 0 },
@@ -52,12 +50,12 @@ export const getPath = (height: number, centerWidth: number, borderLeftRight: bo
     { x: (width - circleWidth) / 2 + circleWidth + 20, y: 0 },
     { x: (width - circleWidth) / 2 + circleWidth + 20, y: 0 },
 
-    { x: width - (borderLeftRight ? 20 : 0), y: 0 }, //border right
-    { x: width - (borderLeftRight ? 20 : 0), y: 0 },
-    { x: width - (borderLeftRight ? 10 : 0 ), y: borderLeftRight ? 2 : 0 },
-    { x: width - (borderLeftRight ? 2 : 0), y: borderLeftRight ? 10 : 0 },
-    { x: width, y: borderLeftRight ? 20 : 0 },
-    { x: width, y: borderLeftRight ? 20 : 0},
+    { x: width - (borderTopLeftRight ? 20 : 0), y: 0 }, //border right
+    { x: width - (borderTopLeftRight ? 20 : 0), y: 0 },
+    { x: width - (borderTopLeftRight ? 10 : 0 ), y: borderTopLeftRight ? 2 : 0 },
+    { x: width - (borderTopLeftRight ? 2 : 0), y: borderTopLeftRight ? 10 : 0 },
+    { x: width, y: borderTopLeftRight ? 20 : 0 },
+    { x: width, y: borderTopLeftRight ? 20 : 0},
     { x: width, y: 0 },
     { x: width, y: 0 },
 

@@ -93,6 +93,7 @@ cd ios && pod install
             alignItems: 'center',
             justifyContent: 'center',
             backgroundColor: 'black',
+            bottom: 40
         },
         imgCircle: {
             width: 30,

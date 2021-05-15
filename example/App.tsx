@@ -9,9 +9,11 @@ const ThemeScreen = props => {
   return (
     <View style={styles.container}>
       <CurveBottomBar.Navigator
-        height={70}
-        circleWidth={60}
-        borderLeftRight={true}
+        // style={{marginBottom: 10}}
+        // width={400}
+        // height={70}
+        // circleWidth={60}
+        borderTopLeftRight={true}
         bgColor="black"
         initialRouteName="title 1"
         renderCircle={() => (
@@ -80,6 +82,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'black',
+    bottom: 40
   },
   imgCircle: {
     width: 30,

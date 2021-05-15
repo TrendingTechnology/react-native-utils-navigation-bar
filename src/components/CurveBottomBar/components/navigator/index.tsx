@@ -3,12 +3,13 @@ import React, { useEffect, useState } from 'react';
 import { Dimensions, SafeAreaView, StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
 import { getPath } from './path';
-const { width } = Dimensions.get('window');
+const { width: w } = Dimensions.get('window');
 
 export interface Props {
   style?: StyleProp<ViewStyle>;
-  height: number;
-  borderLeftRight?: boolean;
+  width?: number;
+  height?: number;
+  borderTopLeftRight?: boolean;
   circleWidth?: number;
   bgColor?: string;
   initialRouteName: string;
@@ -26,19 +27,20 @@ export interface Props {
 
 const defaultProps = {
   bgColor: 'gray',
-  borderLeftRight: false,
+  borderTopLeftRight: false,
 };
 
 const BottomBarComponent: React.FC<Props> = (props) => {
   const {
     style,
+    width = w,
     height = 65,
     circleWidth = 60,
     bgColor,
     initialRouteName,
     tabBar,
     renderCircle,
-    borderLeftRight
+    borderTopLeftRight
   } = props;
   const [selectMenuItem, setSelectMenuItem] = useState(null);
   const [selectTab, setSelectTab] = useState<string>(initialRouteName);
@@ -46,7 +48,7 @@ const BottomBarComponent: React.FC<Props> = (props) => {
   const [itemRight, setItemRight] = useState([]);
 
   const _renderButtonCenter = () => {
-    return <View style={{ bottom: height / 1.8 }}>{renderCircle()}</View>;
+    return renderCircle();
   };
 
   useEffect(() => {
@@ -71,7 +73,7 @@ const BottomBarComponent: React.FC<Props> = (props) => {
     }
   };
 
-  const d = getPath(height, circleWidth >= 60 ? circleWidth : 60, borderLeftRight);
+  const d = getPath(width, height, circleWidth >= 60 ? circleWidth : 60, borderTopLeftRight);
   if (d) {
     return (
       <SafeAreaView style={[styles.wrapContainer, { backgroundColor: bgColor }]}>
@@ -81,7 +83,7 @@ const BottomBarComponent: React.FC<Props> = (props) => {
             <Svg width={width} {...{ height }}>
               <Path fill={bgColor} {...{ d }} />
             </Svg>
-            <View style={styles.main}>
+            <View style={[styles.main, {width: width}]}>
               <View style={[styles.rowLeft, { height: height }]}>
                 {itemLeft.map((item: any, index) => {
                   const routeName: string = item.props.name;
@@ -136,9 +138,9 @@ const styles = StyleSheet.create({
   container: {
     position: 'absolute',
     bottom: 0,
+    alignSelf: 'center'
   },
   main: {
-    width: width,
     position: 'absolute',
     flexDirection: 'row',
     justifyContent: 'space-between',
