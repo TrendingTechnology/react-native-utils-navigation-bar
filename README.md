@@ -107,3 +107,6 @@ cd ios && pod install
     });
 
 ```
+
+## Source code example
+https://github.com/hoaphantn7604/react-native-utils-navigation-bar/tree/master/example
