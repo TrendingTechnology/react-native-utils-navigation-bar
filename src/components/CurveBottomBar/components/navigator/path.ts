@@ -2,7 +2,7 @@ import * as shape from 'd3-shape';
 import { Dimensions } from 'react-native';
 const { width } = Dimensions.get('window');
 
-export const getPath = (height: number, centerWidth: number) => {
+export const getPath = (height: number, centerWidth: number, borderLeftRight: boolean = false) => {
   const circleWidth = centerWidth + 16;
   const left = shape
     .line()
@@ -25,12 +25,12 @@ export const getPath = (height: number, centerWidth: number) => {
     { x: 0, y: height },
     { x: 0, y: height },
 
-    { x: 0, y: 20 }, // border left
-    { x: 0, y: 20 },
-    { x: 0 + 2, y: 10 },
-    { x: 0 + 10, y: 2 },
-    { x: 0 + 20, y: 0 },
-    { x: 0 + 20, y: 0 },
+    { x: 0, y: borderLeftRight ? 20 : 0 }, // border left
+    { x: 0, y: borderLeftRight ? 20 : 0 },
+    { x: 0 + (borderLeftRight ? 2: 0), y: borderLeftRight ? 10 : 0 },
+    { x: 0 + (borderLeftRight ? 10: 0 ), y: borderLeftRight ? 2: 0 },
+    { x: 0 + (borderLeftRight ? 20 : 0), y: 0 },
+    { x: 0 + (borderLeftRight ? 20: 0), y: 0 },
 
     { x: (width - circleWidth) / 2 - 20, y: 0 }, // border center left
     { x: (width - circleWidth) / 2 - 20, y: 0 },
@@ -52,12 +52,12 @@ export const getPath = (height: number, centerWidth: number) => {
     { x: (width - circleWidth) / 2 + circleWidth + 20, y: 0 },
     { x: (width - circleWidth) / 2 + circleWidth + 20, y: 0 },
 
-    { x: width - 20, y: 0 }, //border right
-    { x: width - 20, y: 0 },
-    { x: width - 10, y: 2 },
-    { x: width - 2, y: 10 },
-    { x: width, y: 20 },
-    { x: width, y: 20 },
+    { x: width - (borderLeftRight ? 20 : 0), y: 0 }, //border right
+    { x: width - (borderLeftRight ? 20 : 0), y: 0 },
+    { x: width - (borderLeftRight ? 10 : 0 ), y: borderLeftRight ? 2 : 0 },
+    { x: width - (borderLeftRight ? 2 : 0), y: borderLeftRight ? 10 : 0 },
+    { x: width, y: borderLeftRight ? 20 : 0 },
+    { x: width, y: borderLeftRight ? 20 : 0},
     { x: width, y: 0 },
     { x: width, y: 0 },
 

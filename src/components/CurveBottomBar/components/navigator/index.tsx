@@ -8,6 +8,7 @@ const { width } = Dimensions.get('window');
 export interface Props {
   style?: StyleProp<ViewStyle>;
   height: number;
+  borderLeftRight?: boolean;
   circleWidth?: number;
   bgColor?: string;
   initialRouteName: string;
@@ -25,6 +26,7 @@ export interface Props {
 
 const defaultProps = {
   bgColor: 'gray',
+  borderLeftRight: false,
 };
 
 const BottomBarComponent: React.FC<Props> = (props) => {
@@ -36,6 +38,7 @@ const BottomBarComponent: React.FC<Props> = (props) => {
     initialRouteName,
     tabBar,
     renderCircle,
+    borderLeftRight
   } = props;
   const [selectMenuItem, setSelectMenuItem] = useState(null);
   const [selectTab, setSelectTab] = useState<string>(initialRouteName);
@@ -68,7 +71,7 @@ const BottomBarComponent: React.FC<Props> = (props) => {
     }
   };
 
-  const d = getPath(height, circleWidth >= 60 ? circleWidth : 60);
+  const d = getPath(height, circleWidth >= 60 ? circleWidth : 60, borderLeftRight);
   if (d) {
     return (
       <SafeAreaView style={[styles.wrapContainer, { backgroundColor: bgColor }]}>

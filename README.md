@@ -26,6 +26,7 @@ cd ios && pod install
                     height={70}
                     circleWidth={60}
                     bgColor="black"
+                    borderLeftRight={true}
                     initialRouteName="title1"
                     renderCircle={() => (
                         <TouchableOpacity

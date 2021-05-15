@@ -11,6 +11,7 @@ const ThemeScreen = props => {
       <CurveBottomBar.Navigator
         height={70}
         circleWidth={60}
+        borderLeftRight={true}
         bgColor="black"
         initialRouteName="title 1"
         renderCircle={() => (
