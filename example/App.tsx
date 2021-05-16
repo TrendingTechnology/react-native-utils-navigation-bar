@@ -1,21 +1,22 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import { Image, StyleSheet, Text, TouchableOpacity, View, Dimensions } from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View, Dimensions, StatusBar } from 'react-native';
 import { CurveBottomBar } from 'react-native-utils-navigation-bar';
 const { width } = Dimensions.get('window');
 const ic_react = require('./assets/ic_react.png');
 
+StatusBar.setBarStyle('light-content');
 const ThemeScreen = props => {
   return (
     <View style={styles.container}>
       <CurveBottomBar.Navigator
-        style={{marginBottom: 10}}
-        width={width - 30}
+        style={{}}
+        width={width}
         height={70}
         circleWidth={60}
         borderTopLeftRight={true}
         bgColor="black"
-        initialRouteName="title 1"
+        initialRouteName="title1"
         renderCircle={() => (
           <TouchableOpacity
             style={styles.btnCircle} onPress={() => alert('Click!')}>
@@ -25,7 +26,7 @@ const ThemeScreen = props => {
         tabBar={({ routeName, selectTab, navigation }) => {
           return (
             <TouchableOpacity
-              onPress={() => navigation(routeName)}
+              onPress={() => routeName !== 'title4' ? navigation(routeName) : alert('onClick title4')}
               style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
               <Image
                 source={ic_react}
@@ -45,22 +46,22 @@ const ThemeScreen = props => {
         }}
        >
         <CurveBottomBar.Screen
-          name="title 1"
+          name="title1"
           position="left"
           component={() => <View style={{ backgroundColor: 'gray', flex: 1 }} />}
         />
         <CurveBottomBar.Screen
-          name="title 2"
+          name="title2"
           component={() => <View style={{ backgroundColor: '#48CEF6', flex: 1 }} />}
           position="left"
         />
         <CurveBottomBar.Screen
-          name="title1 3"
+          name="title13"
           component={() => <View style={{ backgroundColor: 'gray', flex: 1 }} />}
           position="right"
         />
         <CurveBottomBar.Screen
-          name="title 4"
+          name="title4"
           component={() => <View style={{ backgroundColor: '#48CEF6', flex: 1 }} />}
           position="right"
         />

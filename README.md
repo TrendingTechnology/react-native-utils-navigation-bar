@@ -9,7 +9,7 @@
 cd ios && pod install
 
 ### Demo
-![](./document/demo.gif?raw=true "Demo")
+![](https://github.com/hoaphantn7604/file-upload/blob/master/document/navigationbar/demo.gif)
 
 ## Usage
 ```javascript

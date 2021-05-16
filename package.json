@@ -1,7 +1,7 @@
 {
   "name": "react-native-utils-navigation-bar",
   "title": "React Native Utils Navigation Bar",
-  "version": "0.1.6",
+  "version": "1.0.0",
   "description": "React Native Navigation Bar",
   "main": "index.ts",
   "scripts": {
