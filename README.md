@@ -20,10 +20,12 @@ cd ios && pod install
     const ic_react = require('./assets/ic_react.png');
 
     const ThemeScreen = props => {
+         const [type, setType] = useState<'CURVE_DOWN' | 'CURVE_UP'>('CURVE_DOWN');
+
         return (
             <View style={styles.container}>
                 <CurveBottomBar.Navigator
-                    type={'CURVE_DOWN'}
+                    type={type} // CURVE_DOWN , CURVE_UP
                     height={70}
                     circleWidth={60}
                     bgColor="black"
@@ -31,7 +33,7 @@ cd ios && pod install
                     initialRouteName="title1"
                     renderCircle={() => (
                         <TouchableOpacity
-                            style={styles.btnCircle} onPress={() => alert('Click!')}>
+                            style={[type === 'CURVE_DOWN' ? styles.btnCircle : styles.btnCircleUp]} onPress={() => alert('Click!')}>
                             <Image source={ic_react} style={styles.imgCircle} />
                         </TouchableOpacity>
                     )}
@@ -95,6 +97,15 @@ cd ios && pod install
             justifyContent: 'center',
             backgroundColor: 'black',
             bottom: 40
+        },
+        btnCircleUp: {
+            width: 70,
+            height: 70,
+            borderRadius: 35,
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: 'white',
+            bottom: 18
         },
         imgCircle: {
             width: 30,
