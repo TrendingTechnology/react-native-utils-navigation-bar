@@ -23,6 +23,7 @@ cd ios && pod install
         return (
             <View style={styles.container}>
                 <CurveBottomBar.Navigator
+                    type={'CURVE_DOWN'}
                     height={70}
                     circleWidth={60}
                     bgColor="black"

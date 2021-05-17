@@ -88,3 +88,79 @@ export const getPath = (width: number, height: number, centerWidth: number, bord
   ]);
   return `${left} ${tab} ${right}`;
 };
+
+
+export const getPathUp = (width: number, height: number, circleWidth: number = 60, borderTopLeftRight: boolean = false) => {
+  const line = shape
+    .line()
+    .x((d) => d.x)
+    .y((d) => d.y)([
+      { x: width / 2 - circleWidth, y: 30 },
+      { x: 0, y: 30 },
+      { x: 0, y: height },
+      { x: width, y: height },
+      { x: width, y: 30 },
+      { x: width / 2 + circleWidth, y: 30 },
+    ]);
+
+  const curve = shape
+    .line()
+    .x((d) => d.x)
+    .y((d) => d.y)
+    .curve(shape.curveBasis)([
+      { x: width / 2 - (circleWidth + 20), y: 30 },
+      { x: width / 2 - circleWidth / 1.3, y: 30 },
+      { x: width / 2 - circleWidth / 2, y: 10 },
+      { x: width / 2, y: 0 },
+      { x: width / 2 + circleWidth / 2, y: 10 },
+      { x: width / 2 + circleWidth / 1.3, y: 30 },
+      { x: width / 2 + circleWidth + 20, y: 30 },
+    ]);
+
+  const borderLeft = shape
+    .line()
+    .x((d) => d.x)
+    .y((d) => d.y)
+    .curve(shape.curveBasis)([
+      { x: 0, y: circleWidth - 5 },
+      { x: 5, y: 35 },
+      { x: 20, y: 30 },
+    ]);
+
+  const borderRight = shape
+    .line()
+    .x((d) => d.x)
+    .y((d) => d.y)
+    .curve(shape.curveBasis)([
+      { x: width, y: circleWidth - 5 },
+      { x: width - 5, y: 35 },
+      { x: width - 20, y: 30 },
+    ]);
+
+
+  const lineWidth = shape
+    .line()
+    .x((d) => d.x)
+    .y((d) => d.y)([
+      { x: width - 20, y: 30 },
+      { x: 20, y: 30 },
+    ]);
+
+  const lineContent = shape
+    .line()
+    .x((d) => d.x)
+    .y((d) => d.y)([
+      { x: 0, y: circleWidth - 5 },
+      { x: 0, y: height },
+      {x:width, y: height},
+      { x: width, y: circleWidth - 5 },
+      { x: width - 20, y: 30 },
+      { x: 20, y: 30 },
+    ]);
+
+  if (!borderTopLeftRight) {
+    return `${line} ${curve}`;
+  } else {
+    return `${lineContent} ${borderRight} ${lineWidth} ${borderLeft} ${curve}`;
+  }
+};

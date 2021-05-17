@@ -1,35 +1,35 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, { useState } from 'react';
-import { Image, StyleSheet, Text, TouchableOpacity, View, Dimensions, StatusBar } from 'react-native';
-import { CurveUpBottomBar, CurveBottomBar } from 'react-native-utils-navigation-bar';
-const { width } = Dimensions.get('window');
+import { Image, StyleSheet, Text, TouchableOpacity, View, StatusBar } from 'react-native';
+import { CurveBottomBar } from 'react-native-utils-navigation-bar';
 const ic_react = require('./assets/ic_react.png');
 
 StatusBar.setBarStyle('light-content');
 
 const ThemeScreen = props => {
-  const [type, setType] = useState<'down' | 'up'>('up');
+  const [type, setType] = useState<'CURVE_DOWN' | 'CURVE_UP'>('CURVE_DOWN');
 
   const onClickButton = () => {
-    if (type === 'up') {
-      setType('down');
+    if (type === 'CURVE_UP') {
+      setType('CURVE_DOWN');
       alert('Change type curve down');
     } else {
-      setType('up');
+      setType('CURVE_UP');
       alert('Change type curve up');
     }
   }
 
-  const _renderCurveDown = () => {
+  const _renderCurve = () => {
     return <CurveBottomBar.Navigator
+      type={type}
       height={70}
       circleWidth={60}
       bgColor="black"
-      borderTopLeftRight={false}
+      borderTopLeftRight={true}
       initialRouteName="title1"
       renderCircle={() => (
         <TouchableOpacity
-          style={styles.btnCircle} onPress={onClickButton}>
+          style={[type === 'CURVE_DOWN' ? styles.btnCircle : styles.btnCircleUp]} onPress={onClickButton}>
           <Image source={ic_react} style={styles.imgCircle} />
         </TouchableOpacity>
       )}
@@ -77,68 +77,10 @@ const ThemeScreen = props => {
     </CurveBottomBar.Navigator>
   }
 
-  const _renderCurveUp = () => {
-    return <CurveUpBottomBar.Navigator
-      style={{}}
-      width={width}
-      height={70}
-      circleWidth={60}
-      bgColor="black"
-      initialRouteName="title1"
-      renderCircle={() => (
-        <TouchableOpacity
-          style={styles.btnCircleUp} onPress={onClickButton}>
-          <Image source={ic_react} style={styles.imgCircle} />
-        </TouchableOpacity>
-      )}
-      tabBar={({ routeName, selectTab, navigation }) => {
-        return (
-          <TouchableOpacity
-            onPress={() => routeName !== 'title4' ? navigation(routeName) : alert('onClick title4')}
-            style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Image
-              source={ic_react}
-              style={[styles.img, {
-                tintColor: routeName === selectTab ? '#48CEF6' : 'white',
-              }]}
-            />
-            <Text
-              style={{
-                marginTop: 5,
-                color: routeName === selectTab ? '#48CEF6' : 'white',
-              }}>
-              {routeName}
-            </Text>
-          </TouchableOpacity>
-        );
-      }}
-    >
-      <CurveUpBottomBar.Screen
-        name="title1"
-        position="left"
-        component={() => <View style={{ backgroundColor: 'gray', flex: 1 }} />}
-      />
-      <CurveUpBottomBar.Screen
-        name="title2"
-        component={() => <View style={{ backgroundColor: '#48CEF6', flex: 1 }} />}
-        position="left"
-      />
-      <CurveUpBottomBar.Screen
-        name="title13"
-        component={() => <View style={{ backgroundColor: 'gray', flex: 1 }} />}
-        position="right"
-      />
-      <CurveUpBottomBar.Screen
-        name="title4"
-        component={() => <View style={{ backgroundColor: '#48CEF6', flex: 1 }} />}
-        position="right"
-      />
-    </CurveUpBottomBar.Navigator>
-  }
 
   return (
     <View style={styles.container}>
-      {type === 'up' ? _renderCurveUp() : _renderCurveDown()}
+      {_renderCurve()}
     </View>
   );
 };

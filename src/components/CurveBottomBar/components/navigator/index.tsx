@@ -2,10 +2,11 @@
 import React, { useEffect, useState } from 'react';
 import { Dimensions, SafeAreaView, StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
-import { getPath } from './path';
+import { getPath, getPathUp } from './path';
 const { width: w } = Dimensions.get('window');
 
 export interface Props {
+  type?: 'CURVE_DOWN' | 'CURVE_UP';
   style?: StyleProp<ViewStyle>;
   width?: number;
   height?: number;
@@ -27,11 +28,13 @@ export interface Props {
 
 const defaultProps = {
   bgColor: 'gray',
+  type: 'CURVE_DOWN',
   borderTopLeftRight: false,
 };
 
 const BottomBarComponent: React.FC<Props> = (props) => {
   const {
+    type,
     style,
     width = w,
     height = 65,
@@ -73,17 +76,17 @@ const BottomBarComponent: React.FC<Props> = (props) => {
     }
   };
 
-  const d = getPath(width, height, circleWidth >= 60 ? circleWidth : 60, borderTopLeftRight);
+  const d = type === 'CURVE_DOWN' ? getPath(width, height, circleWidth >= 60 ? circleWidth : 60, borderTopLeftRight) : getPathUp(width, height + 30, circleWidth >= 60 ? circleWidth : 60, borderTopLeftRight);
   if (d) {
     return (
       <SafeAreaView style={[styles.wrapContainer, { backgroundColor: bgColor }]}>
         <View style={styles.wrapContainer}>
           {selectMenuItem ? <View style={{ flex: 1, backgroundColor: 'white' }}>{selectMenuItem}</View> : null}
           <View style={[styles.container, style]}>
-            <Svg width={width} {...{ height }}>
+            <Svg width={width} height={height + (type === 'CURVE_DOWN' ? 0 : 30)}>
               <Path fill={bgColor} {...{ d }} />
             </Svg>
-            <View style={[styles.main, {width: width}]}>
+            <View style={[styles.main, { width: width }, type === 'CURVE_UP' && { top: 30 }]}>
               <View style={[styles.rowLeft, { height: height }]}>
                 {itemLeft.map((item: any, index) => {
                   const routeName: string = item.props.name;
