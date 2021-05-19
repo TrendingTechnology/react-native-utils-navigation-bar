@@ -4,10 +4,6 @@
 
 `$ yarn add react-native-utils-navigation-bar react-native-svg`
 
-### Start IOS
-
-cd ios && pod install
-
 ### Demo
 ![](https://github.com/hoaphantn7604/file-upload/blob/master/document/navigationbar/demo.gif)
 
