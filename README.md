@@ -11,21 +11,25 @@ cd ios && pod install
 ### Demo
 ![](https://github.com/hoaphantn7604/file-upload/blob/master/document/navigationbar/demo.gif)
 
+
 ### CurveBottomBar.Navigator
+
 | Props              | Params               | isRequire | default          |
 | ------------------ | -------------------- | --------- | ---------------- |
-| style              | ViewStyle            | No        | {}               |
 | type               | CURVE_DOWN, CURVE_UP | Yes       | CURVE_DOWN       |
+| initialRouteName   | String               | Yes       |                  |
+| renderCircle       | () => JSX.Element    | Yes       |                  |
+| tabBar             | () => JSX.Element    | Yes       |                  |
+| style              | ViewStyle            | No        |                  |
 | width              | Number               | No        | Dimensions width |
 | height             | Number               | No        | 65               |
 | circleWidth        | Number               | No        | 60               |
 | borderTopLeftRight | Boolean              | No        | false            |
 | bgColor            | String               | No        | gray             |
-| initialRouteName   | String               | Yes       |                  |
-| renderCircle       | () => JSX.Element    | Yes       |                  |
-| tabBar             | () => JSX.Element    | Yes       |                  |
+
 
 ### CurveBottomBar.Screen
+
 | Props              | Params               | isRequire | default          |
 | ------------------ | -------------------- | --------- | ---------------- |
 | name               | String               | Yes       |                  |
