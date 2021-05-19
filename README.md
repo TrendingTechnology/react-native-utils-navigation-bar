@@ -11,7 +11,7 @@ cd ios && pod install
 ### Demo
 ![](https://github.com/hoaphantn7604/file-upload/blob/master/document/navigationbar/demo.gif)
 
-## CurveBottomBar.Navigator
+### CurveBottomBar.Navigator
 | Props              | Params               | isRequire | default          |
 | ------------------ | -------------------- | --------- | ---------------- |
 | style              | ViewStyle            | No        | {}               |
@@ -25,14 +25,14 @@ cd ios && pod install
 | renderCircle       | () => JSX.Element    | Yes       |                  |
 | tabBar             | () => JSX.Element    | Yes       |                  |
 
-## CurveBottomBar.Screen
+### CurveBottomBar.Screen
 | Props              | Params               | isRequire | default          |
 | ------------------ | -------------------- | --------- | ---------------- |
 | name               | String               | Yes       |                  |
 | position           | left, right          | Yes       |                  |
 | component          | () => JSX.Element    | Yes       |                  |
 
-## Usage
+### Usage
 ```javascript
     import React, { useState } from 'react';
     import { StatusBar, StyleSheet, TouchableOpacity, View } from 'react-native';
