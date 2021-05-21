@@ -1,30 +1,10 @@
-/* eslint-disable no-undef */
 import React, { useEffect, useState } from 'react';
-import { Dimensions, SafeAreaView, StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
+import { Dimensions, SafeAreaView, View } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
 import { getPath, getPathUp } from './path';
+import { styles } from './styles';
+import { CurveBottomBar } from './type';
 const { width: w } = Dimensions.get('window');
-
-export interface Props {
-  type?: 'CURVE_DOWN' | 'CURVE_UP';
-  style?: StyleProp<ViewStyle>;
-  width?: number;
-  height?: number;
-  borderTopLeftRight?: boolean;
-  circleWidth?: number;
-  bgColor?: string;
-  initialRouteName: string;
-  renderCircle: () => JSX.Element;
-  tabBar: ({
-    routeName,
-    selectTab,
-    navigation,
-  }: {
-    routeName: string;
-    selectTab: string;
-    navigation: (selectTab: string) => void;
-  }) => React.ReactNode;
-}
 
 const defaultProps = {
   bgColor: 'gray',
@@ -32,7 +12,7 @@ const defaultProps = {
   borderTopLeftRight: false,
 };
 
-const BottomBarComponent: React.FC<Props> = (props) => {
+const BottomBarComponent: CurveBottomBar = (props) => {
   const {
     type,
     style,
@@ -133,31 +113,3 @@ const BottomBarComponent: React.FC<Props> = (props) => {
 BottomBarComponent.defaultProps = defaultProps;
 
 export default BottomBarComponent;
-
-const styles = StyleSheet.create({
-  wrapContainer: {
-    flex: 1,
-  },
-  container: {
-    position: 'absolute',
-    bottom: 0,
-    alignSelf: 'center'
-  },
-  main: {
-    position: 'absolute',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  rowLeft: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  rowRight: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-});
