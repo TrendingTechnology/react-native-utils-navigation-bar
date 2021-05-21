@@ -1,7 +1,7 @@
 import { StyleProp, ViewStyle } from 'react-native';
 
 interface Props {
-    type?: 'CURVE_DOWN' | 'CURVE_UP';
+    type?: 'CURVE_DOWN' | 'CURVE_UP' | string;
     style?: StyleProp<ViewStyle>;
     width?: number;
     height?: number;
@@ -21,4 +21,4 @@ interface Props {
     }) => JSX.Element;
 }
 
-export type CurveBottomBar = React.FC<Props>
+export type NavigatorBottomBar = React.FC<Props>

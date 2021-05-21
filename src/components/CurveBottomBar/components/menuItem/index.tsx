@@ -1,13 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { ScreenBottomBar } from './type';
 
-export interface Props {
-  name: string;
-  position: 'left' | 'right';
-  component: () => JSX.Element;
-}
-
-const MenuItemComponent: React.FC<Props> = (props) => {
+const MenuItemComponent: ScreenBottomBar = (props) => {
   const { name } = props;
   return (
     <View style={styles.container}>

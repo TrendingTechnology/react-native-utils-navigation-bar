@@ -3,7 +3,7 @@ import { Dimensions, SafeAreaView, View } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
 import { getPath, getPathUp } from './path';
 import { styles } from './styles';
-import { CurveBottomBar } from './type';
+import { NavigatorBottomBar } from './type';
 const { width: w } = Dimensions.get('window');
 
 const defaultProps = {
@@ -12,7 +12,7 @@ const defaultProps = {
   borderTopLeftRight: false,
 };
 
-const BottomBarComponent: CurveBottomBar = (props) => {
+const BottomBarComponent: NavigatorBottomBar = (props) => {
   const {
     type,
     style,
