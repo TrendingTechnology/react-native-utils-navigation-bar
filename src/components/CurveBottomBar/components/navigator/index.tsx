@@ -56,7 +56,7 @@ const BottomBarComponent: NavigatorBottomBar = (props) => {
     }
   };
 
-  const d = type === 'CURVE_DOWN' ? getPath(width, height, circleWidth >= 60 ? circleWidth : 60, borderTopLeftRight) : getPathUp(width, height + 30, circleWidth >= 60 ? circleWidth : 60, borderTopLeftRight);
+  const d = type === 'CURVE_DOWN' ? getPath(width, height, circleWidth >= 50 ? circleWidth : 50, borderTopLeftRight) : getPathUp(width, height + 30, circleWidth >= 60 ? circleWidth : 60, borderTopLeftRight);
   if (d) {
     return (
       <SafeAreaView style={[styles.wrapContainer, { backgroundColor: bgColor }]}>
@@ -64,7 +64,7 @@ const BottomBarComponent: NavigatorBottomBar = (props) => {
           {selectMenuItem ? <View style={{ flex: 1, backgroundColor: 'white' }}>{selectMenuItem}</View> : null}
           <View style={[styles.container, style]}>
             <Svg width={width} height={height + (type === 'CURVE_DOWN' ? 0 : 30)}>
-              <Path fill={bgColor} {...{ d }} />
+              <Path fill={bgColor} stroke="#DDDDDD" strokeWidth={0.5} {...{ d }}/>
             </Svg>
             <View style={[styles.main, { width: width }, type === 'CURVE_UP' && { top: 30 }]}>
               <View style={[styles.rowLeft, { height: height }]}>

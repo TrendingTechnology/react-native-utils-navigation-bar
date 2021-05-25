@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
     container: {
       position: 'absolute',
       bottom: 0,
-      alignSelf: 'center'
+      alignSelf: 'center',
     },
     main: {
       position: 'absolute',
