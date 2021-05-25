@@ -4,8 +4,7 @@ import Svg, { Path } from 'react-native-svg';
 import { getPath, getPathUp } from './path';
 import { styles } from './styles';
 import { NavigatorBottomBar } from './type';
-
-const { width: w } = Dimensions.get('window');
+import {useDeviceOrientation} from '../../../useDeviceOrientation';
 
 const defaultProps = {
   bgColor: 'gray',
@@ -18,7 +17,7 @@ const BottomBarComponent: NavigatorBottomBar = (props) => {
   const {
     type,
     style,
-    width = w,
+    width = null,
     height = 65,
     circleWidth = 60,
     bgColor,
@@ -32,6 +31,17 @@ const BottomBarComponent: NavigatorBottomBar = (props) => {
   const [selectTab, setSelectTab] = useState<string>(initialRouteName);
   const [itemLeft, setItemLeft] = useState([]);
   const [itemRight, setItemRight] = useState([]);
+  const [maxWidth, setMaxWidth] = useState<any>(width);
+
+  const orientation = useDeviceOrientation();
+
+  useEffect(()=> {
+    if(!width){
+      const { width: w } = Dimensions.get('screen');
+      setMaxWidth(w);
+    }
+    console.log(orientation)
+  }, [orientation])
 
   const _renderButtonCenter = () => {
     return renderCircle();
@@ -59,17 +69,17 @@ const BottomBarComponent: NavigatorBottomBar = (props) => {
     }
   };
 
-  const d = type === 'CURVE_DOWN' ? getPath(width, height, circleWidth >= 50 ? circleWidth : 50, borderTopLeftRight) : getPathUp(width, height + 30, circleWidth >= 60 ? circleWidth : 60, borderTopLeftRight);
+  const d = type === 'CURVE_DOWN' ? getPath(maxWidth, height, circleWidth >= 50 ? circleWidth : 50, borderTopLeftRight) : getPathUp(width, height + 30, circleWidth >= 60 ? circleWidth : 60, borderTopLeftRight);
   if (d) {
     return (
       <SafeAreaView style={[styles.wrapContainer, { backgroundColor: bgColor }]}>
         <View style={styles.wrapContainer}>
           {selectMenuItem ? <View style={{ flex: 1, backgroundColor: 'white' }}>{selectMenuItem}</View> : null}
           <View style={[styles.container, style]}>
-            <Svg width={width} height={height + (type === 'CURVE_DOWN' ? 0 : 30)}>
+            <Svg width={maxWidth} height={height + (type === 'CURVE_DOWN' ? 0 : 30)}>
               <Path fill={bgColor} stroke="#DDDDDD" strokeWidth={strokeWidth} {...{ d }}/>
             </Svg>
-            <View style={[styles.main, { width: width }, type === 'CURVE_UP' && { top: 30 }]}>
+            <View style={[styles.main, { width: maxWidth }, type === 'CURVE_UP' && { top: 30 }]}>
               <View style={[styles.rowLeft, { height: height }]}>
                 {itemLeft.map((item: any, index) => {
                   const routeName: string = item.props.name;
