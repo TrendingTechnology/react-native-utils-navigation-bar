@@ -40,7 +40,6 @@ const BottomBarComponent: NavigatorBottomBar = (props) => {
       const { width: w } = Dimensions.get('screen');
       setMaxWidth(w);
     }
-    console.log(orientation)
   }, [orientation])
 
   const _renderButtonCenter = () => {
