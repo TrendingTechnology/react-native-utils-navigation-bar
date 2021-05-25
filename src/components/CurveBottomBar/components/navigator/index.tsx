@@ -4,12 +4,14 @@ import Svg, { Path } from 'react-native-svg';
 import { getPath, getPathUp } from './path';
 import { styles } from './styles';
 import { NavigatorBottomBar } from './type';
+
 const { width: w } = Dimensions.get('window');
 
 const defaultProps = {
   bgColor: 'gray',
   type: 'CURVE_DOWN',
   borderTopLeftRight: false,
+  strokeWidth: 0
 };
 
 const BottomBarComponent: NavigatorBottomBar = (props) => {
@@ -23,7 +25,8 @@ const BottomBarComponent: NavigatorBottomBar = (props) => {
     initialRouteName,
     tabBar,
     renderCircle,
-    borderTopLeftRight
+    borderTopLeftRight,
+    strokeWidth
   } = props;
   const [selectMenuItem, setSelectMenuItem] = useState(null);
   const [selectTab, setSelectTab] = useState<string>(initialRouteName);
@@ -64,7 +67,7 @@ const BottomBarComponent: NavigatorBottomBar = (props) => {
           {selectMenuItem ? <View style={{ flex: 1, backgroundColor: 'white' }}>{selectMenuItem}</View> : null}
           <View style={[styles.container, style]}>
             <Svg width={width} height={height + (type === 'CURVE_DOWN' ? 0 : 30)}>
-              <Path fill={bgColor} stroke="#DDDDDD" strokeWidth={0.5} {...{ d }}/>
+              <Path fill={bgColor} stroke="#DDDDDD" strokeWidth={strokeWidth} {...{ d }}/>
             </Svg>
             <View style={[styles.main, { width: width }, type === 'CURVE_UP' && { top: 30 }]}>
               <View style={[styles.rowLeft, { height: height }]}>

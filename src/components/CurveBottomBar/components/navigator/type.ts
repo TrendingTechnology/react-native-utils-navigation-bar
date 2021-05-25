@@ -9,6 +9,7 @@ interface Props {
     circleWidth?: number;
     bgColor?: string;
     initialRouteName: string;
+    strokeWidth?: number;
     renderCircle: () => JSX.Element;
     tabBar: ({
       routeName,

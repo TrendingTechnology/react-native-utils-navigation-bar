@@ -22,6 +22,7 @@
 | circleWidth        | Number               | No        | 60               |
 | borderTopLeftRight | Boolean              | No        | false            |
 | bgColor            | String               | No        | gray             |
+| strokeWidth        | Number               | No        | 0                |
 
 
 ### CurveBottomBar.Screen
