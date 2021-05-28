@@ -12,7 +12,7 @@
 
 | Props              | Params               | isRequire | default          |
 | ------------------ | -------------------- | --------- | ---------------- |
-| type               | CURVE_DOWN, CURVE_UP | Yes       | CURVE_DOWN       |
+| type               | down or up           | Yes       | down             |
 | initialRouteName   | String               | Yes       |                  |
 | renderCircle       | () => JSX.Element    | Yes       |                  |
 | tabBar             | () => JSX.Element    | Yes       |                  |
@@ -37,21 +37,21 @@
 ```javascript
     import React, { useState } from 'react';
     import { StatusBar, StyleSheet, TouchableOpacity, View } from 'react-native';
-    import { CurveBottomBar } from 'react-native-utils-navigation-bar';
+    import { CurvedBottomBar } from 'react-native-utils-navigation-bar';
     import Ionicons from 'react-native-vector-icons/Ionicons';
 
     StatusBar.setBarStyle('dark-content');
 
     const ThemeScreen = props => {
-        const [type, setType] = useState<'CURVE_DOWN' | 'CURVE_UP'>('CURVE_DOWN');
+        const [type, setType] = useState<'down' | 'up'>('down');
 
         const onClickButton = () => {
-            if (type === 'CURVE_UP') {
-            setType('CURVE_DOWN');
-            alert('Change type curve down');
+            if (type === 'up') {
+                setType('down');
+                alert('Change type curve down');
             } else {
-            setType('CURVE_UP');
-            alert('Change type curve up');
+                setType('up');
+                alert('Change type curve up');
             }
         }
 
@@ -74,24 +74,23 @@
             }
 
             return (
-            <Ionicons name={icon} size={23} color={routeName === selectTab ? '#FF3030' : 'gray'} />
+                <Ionicons name={icon} size={23} color={routeName === selectTab ? '#FF3030' : 'gray'} />
             );
         };
 
         return (
             <View style={styles.container}>
-                <CurveBottomBar.Navigator
-                    style={[type === 'CURVE_DOWN' && {backgroundColor: '#F5F5F5'}]}
+                <CurvedBottomBar.Navigator
+                    style={[type === 'down' && {backgroundColor: '#F5F5F5'}]}
                     type={type}
                     height={60}
                     circleWidth={55}
                     bgColor="white"
-                    borderTopLeftRight={false}
+                    borderTopLeftRight={true}
                     initialRouteName="title1"
                     renderCircle={() => (
                         <TouchableOpacity
-                            style={[type === 'CURVE_DOWN' ? styles.btnCircle : styles.btnCircleUp]} 
-                            onPress={onClickButton}
+                            style={[type === 'down' ? styles.btnCircle : styles.btnCircleUp]} onPress={onClickButton}
                         >
                             <Ionicons name="chatbubbles-outline" size={23} />
                         </TouchableOpacity>
@@ -106,27 +105,27 @@
                         </TouchableOpacity>
                     );
                     }}>
-                    <CurveBottomBar.Screen
+                    <CurvedBottomBar.Screen
                         name="title1"
                         position="left"
                         component={() => <View style={{ backgroundColor: '#BFEFFF', flex: 1 }} />}
                     />
-                    <CurveBottomBar.Screen
+                    <CurvedBottomBar.Screen
                         name="title2"
                         component={() => <View style={{ backgroundColor: '#FFEBCD', flex: 1 }} />}
                         position="left"
                     />
-                    <CurveBottomBar.Screen
+                    <CurvedBottomBar.Screen
                         name="title3"
                         component={() => <View style={{ backgroundColor: '#BFEFFF', flex: 1 }} />}
                         position="right"
                     />
-                    <CurveBottomBar.Screen
+                    <CurvedBottomBar.Screen
                         name="title4"
                         component={() => <View style={{ backgroundColor: '#FFEBCD', flex: 1 }} />}
                         position="right"
                     />
-                </CurveBottomBar.Navigator>
+                </CurvedBottomBar.Navigator>
             </View>
         );
     };
@@ -181,6 +180,7 @@
             height: 30,
         }
     });
+
 ```
 
 ## Source code example

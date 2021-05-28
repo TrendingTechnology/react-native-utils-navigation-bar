@@ -8,7 +8,7 @@ import {useDeviceOrientation} from '../../../useDeviceOrientation';
 
 const defaultProps = {
   bgColor: 'gray',
-  type: 'CURVE_DOWN',
+  type: 'down',
   borderTopLeftRight: false,
   strokeWidth: 0
 };
@@ -68,17 +68,17 @@ const BottomBarComponent: NavigatorBottomBar = (props) => {
     }
   };
 
-  const d = type === 'CURVE_DOWN' ? getPath(maxWidth, height, circleWidth >= 50 ? circleWidth : 50, borderTopLeftRight) : getPathUp(width, height + 30, circleWidth >= 60 ? circleWidth : 60, borderTopLeftRight);
+  const d = type === 'down' ? getPath(maxWidth, height, circleWidth >= 50 ? circleWidth : 50, borderTopLeftRight) : getPathUp(maxWidth, height + 30, circleWidth >= 60 ? circleWidth : 60, borderTopLeftRight);
   if (d) {
     return (
       <SafeAreaView style={[styles.wrapContainer, { backgroundColor: bgColor }]}>
         <View style={styles.wrapContainer}>
           {selectMenuItem ? <View style={{ flex: 1, backgroundColor: 'white' }}>{selectMenuItem}</View> : null}
           <View style={[styles.container, style]}>
-            <Svg width={maxWidth} height={height + (type === 'CURVE_DOWN' ? 0 : 30)}>
+            <Svg width={maxWidth} height={height + (type === 'down' ? 0 : 30)}>
               <Path fill={bgColor} stroke="#DDDDDD" strokeWidth={strokeWidth} {...{ d }}/>
             </Svg>
-            <View style={[styles.main, { width: maxWidth }, type === 'CURVE_UP' && { top: 30 }]}>
+            <View style={[styles.main, { width: maxWidth }, type === 'up' && { top: 30 }]}>
               <View style={[styles.rowLeft, { height: height }]}>
                 {itemLeft.map((item: any, index) => {
                   const routeName: string = item.props.name;

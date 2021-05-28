@@ -1,3 +1,3 @@
 // main index.js
-import { CurveBottomBar } from './src/components/CurveBottomBar';
-export { CurveBottomBar }
+import { CurvedBottomBar } from './src/components/CurvedBottomBar';
+export { CurvedBottomBar }

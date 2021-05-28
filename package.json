@@ -1,7 +1,7 @@
 {
   "name": "react-native-utils-navigation-bar",
   "title": "React Native Utils Navigation Bar",
-  "version": "1.0.12",
+  "version": "1.1.0",
   "description": "React Native Navigation Bar",
   "main": "index.ts",
   "scripts": {
@@ -15,8 +15,9 @@
   "keywords": [
     "react-native",
     "navigation",
+    "curved",
     "bottom-bar",
-    "curve-bottom"
+    "curved-bottom"
   ],
   "author": {
     "name": "Hoa Phan",

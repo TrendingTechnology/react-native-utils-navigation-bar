@@ -1,7 +1,7 @@
 import { StyleProp, ViewStyle } from 'react-native';
 
 interface Props {
-    type?: 'CURVE_DOWN' | 'CURVE_UP' | string;
+    type?: 'down' | 'up' | string;
     style?: StyleProp<ViewStyle>;
     width?: number;
     height?: number;
