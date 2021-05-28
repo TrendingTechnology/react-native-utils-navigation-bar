@@ -8,24 +8,24 @@
 ![](https://github.com/hoaphantn7604/file-upload/blob/master/document/navigationbar/demo.gif)
 
 
-### CurveBottomBar.Navigator
+### CurvedBottomBar.Navigator
 
 | Props              | Params               | isRequire | default          |
 | ------------------ | -------------------- | --------- | ---------------- |
-| type               | down or up           | Yes       | down             |
+| type               | down || up           | Yes       | down             |
 | initialRouteName   | String               | Yes       |                  |
 | renderCircle       | () => JSX.Element    | Yes       |                  |
 | tabBar             | () => JSX.Element    | Yes       |                  |
 | style              | ViewStyle            | No        |                  |
 | width              | Number               | No        | Dimensions width |
 | height             | Number               | No        | 65               |
-| circleWidth        | Number               | No        | 60               |
+| circleWidth        | Number               | No        | 50               |
 | borderTopLeftRight | Boolean              | No        | false            |
 | bgColor            | String               | No        | gray             |
 | strokeWidth        | Number               | No        | 0                |
 
 
-### CurveBottomBar.Screen
+### CurvedBottomBar.Screen
 
 | Props              | Params               | isRequire | default          |
 | ------------------ | -------------------- | --------- | ---------------- |
