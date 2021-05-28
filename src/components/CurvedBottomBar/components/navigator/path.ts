@@ -73,7 +73,7 @@ export const getPath = (width: number, height: number, centerWidth: number, bord
 };
 
 
-export const getPathUp = (width: number, height: number, circleWidth: number = 60, borderTopLeftRight: boolean = false) => {
+export const getPathUp = (width: number, height: number, circleWidth: number = 50, borderTopLeftRight: boolean = false) => {
   const line = shape
     .line()
     .x((d) => d.x)

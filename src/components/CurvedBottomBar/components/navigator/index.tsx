@@ -19,7 +19,7 @@ const BottomBarComponent: NavigatorBottomBar = (props) => {
     style,
     width = null,
     height = 65,
-    circleWidth = 60,
+    circleWidth = 50,
     bgColor,
     initialRouteName,
     tabBar,
@@ -68,7 +68,7 @@ const BottomBarComponent: NavigatorBottomBar = (props) => {
     }
   };
 
-  const d = type === 'down' ? getPath(maxWidth, height, circleWidth >= 50 ? circleWidth : 50, borderTopLeftRight) : getPathUp(maxWidth, height + 30, circleWidth >= 60 ? circleWidth : 60, borderTopLeftRight);
+  const d = type === 'down' ? getPath(maxWidth, height, circleWidth >= 50 ? circleWidth : 50, borderTopLeftRight) : getPathUp(maxWidth, height + 30, circleWidth >= 50 ? circleWidth : 50, borderTopLeftRight);
   if (d) {
     return (
       <SafeAreaView style={[styles.wrapContainer, { backgroundColor: bgColor }]}>
