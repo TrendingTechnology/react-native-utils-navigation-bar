@@ -44,7 +44,6 @@ const ThemeScreen = props => {
   return (
     <View style={styles.container}>
       <CurvedBottomBar.Navigator
-        style={[type === 'down' && {backgroundColor: '#F5F5F5'}]}
         type={type}
         height={60}
         circleWidth={55}
