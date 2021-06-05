@@ -12,7 +12,7 @@
 
 | Props              | Params               | isRequire | default          |
 | ------------------ | -------------------- | --------- | ---------------- |
-| type               | 'down' | 'up'        | Yes       | down             |
+| type               | 'down' or 'up'       | Yes       | down             |
 | initialRouteName   | String               | Yes       |                  |
 | renderCircle       | () => JSX.Element    | Yes       |                  |
 | tabBar             | () => JSX.Element    | Yes       |                  |
